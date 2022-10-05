@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
+<body>
+<h4>Информация о тренере:</h4>
+<img th:src="@{/images/{id}(id=${coach.imageName})}" height="60px"/><br><br>
+<b>Имя: </b> <a th:text="${coach.name}"></a><br>
+<b>Описание: </b> <a th:text="${coach.description}"></a><br>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+<!--<form th:action="@{/coach/reg}" method="post" th:object="${Coach}" enctype="multipart/form-data">-->
+<form action="/coach/reg" method="post"  enctype="multipart/form-data">
+<!--    <input th:field="*{name}" placeholder="Name">-->
+<!--    <input th:field="*{username}" placeholder="Username">-->
+<!--    <input th:field="*{password}" placeholder="Password">-->
+<!--    <input th:field="*{description}" placeholder="Description">-->
+<!--    <input th:field="*{image}" type="file" placeholder="Image">-->
+    <input name="name" placeholder="Name">
+    <input name="username" placeholder="Username">
+    <input name="password" placeholder="Password">
+    <input name="description" placeholder="Description">
+    <div class="form-group input-group has-feedback">
+        <label class="col-form-label">Image</label>
+        <input type="file" name="image" />
+    </div>
+    <button>Submit</button>
+</form>
+</body>
+</html>
