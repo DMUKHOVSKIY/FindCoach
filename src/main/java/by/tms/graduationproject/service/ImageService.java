@@ -1,6 +1,5 @@
 package by.tms.graduationproject.service;
 
-import by.tms.graduationproject.entity.Coach;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,13 +16,10 @@ public class ImageService {
     public String upload(MultipartFile image, String path) throws IOException {
         String resultImageName = null;
         if (!image.isEmpty()) {
-
             File uploadDir = new File(path);
-
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
             }
-
             resultImageName = createUniqueImageName(image);
             image.transferTo(new File(path + "/" + resultImageName));
         }

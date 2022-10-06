@@ -6,11 +6,10 @@
 </head>
 <body>
 <div th:insert="_navbar :: navbar"></div>
-<form action="/coach/login" method="post">
+<form action="/user/login" method="post">
     <input name="username" placeholder="Username">
     <input name="password" placeholder="Password">
     <button>Submit</button>
 </form>
-<p th:text="${message}"></p>
 </body>
 </html>

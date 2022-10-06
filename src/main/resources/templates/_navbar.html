@@ -8,7 +8,7 @@
           crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar bg-light" >
+<nav class="navbar bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="https://t.me/dmukhovskiy">
             <img src="https://sowa-ru.com/wp-content/uploads/2019/02/piyadehr.piyadehr8.png"
@@ -22,41 +22,38 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/coach/">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <div th:if="${session.currentUser == null}">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/coach/reg">Registration</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/coach/login">Login</a>
-                    </li>
-                </div>
-                <div th:if="${session.currentUser != null}">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/coach/logout">Logout</a>
-                    </li>
-                </div>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/user/reg">Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/user/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/user/logout">Logout</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<!--<div class="row justify-content-center">-->
-<!--    <div class="card col-sm-6 mt-3 mb-3" style="width: 18rem;">-->
-<!--        <ul th:if="${!#lists.isEmpty(coachesInfo)}">-->
-<!--            <li th:each="coach : ${coachesInfo}">-->
-
-<!--                <img th:src="@{/images/{id}(id=${coach.imageName})}" class="card-img-top" alt="">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title"></h5>-->
-<!--                    <p class="card-text" th:text="${coach.name}"></p>-->
-<!--                    <a th:href="@{/coach/info/{id}(id=${coach.id})}" class="btn btn-primary">Info</a>-->
-<!--                </div>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</div>-->
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+<th:block th:each="user : ${coachesInfo}">
+    <div class="container">
+        <div class="row align-items-center vh-100">
+            <div class="col-4 mx-auto">
+                <div class="card shadow border">
+                    <img th:src="@{/images/{id}(id=${user.imageName})}" class="card-img-top" alt="">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h5 class="card-title" th:text="${user.name}"/>
+                        <p class="card-text" th:text="${user.description} "></p>
+                        <a th:href="@{/user/info/{id}(id=${user.id})}" class="btn btn-primary">Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
 </body>

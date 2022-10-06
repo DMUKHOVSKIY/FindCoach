@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:insert="_navbar :: navbar"></div>
-<form action="/coach/reg" method="post"  enctype="multipart/form-data">
+<form action="/user/reg" method="post" enctype="multipart/form-data">
     <input name="name" placeholder="Name">
     <input name="username" placeholder="Username">
     <input name="password" placeholder="Password">
@@ -17,5 +17,6 @@
     </div>
     <button>Submit</button>
 </form>
+<p th:text="${errorMessage}"></p>
 </body>
 </html>
