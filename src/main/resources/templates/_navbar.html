@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="navbar">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar bg-light" >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="https://t.me/dmukhovskiy">
+            <img src="https://sowa-ru.com/wp-content/uploads/2019/02/piyadehr.piyadehr8.png"
+                 alt="" width="60" height="34" class="d-inline-block align-text-top">
+            FindCoach
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/coach/">Home</a>
+                </li>
+                <div th:if="${session.currentUser == null}">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/coach/reg">Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/coach/login">Login</a>
+                    </li>
+                </div>
+                <div th:if="${session.currentUser != null}">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/coach/logout">Logout</a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--<div class="row justify-content-center">-->
+<!--    <div class="card col-sm-6 mt-3 mb-3" style="width: 18rem;">-->
+<!--        <ul th:if="${!#lists.isEmpty(coachesInfo)}">-->
+<!--            <li th:each="coach : ${coachesInfo}">-->
+
+<!--                <img th:src="@{/images/{id}(id=${coach.imageName})}" class="card-img-top" alt="">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title"></h5>-->
+<!--                    <p class="card-text" th:text="${coach.name}"></p>-->
+<!--                    <a th:href="@{/coach/info/{id}(id=${coach.id})}" class="btn btn-primary">Info</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

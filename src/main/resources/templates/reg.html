@@ -5,13 +5,8 @@
     <title>Registration</title>
 </head>
 <body>
-<!--<form th:action="@{/coach/reg}" method="post" th:object="${Coach}" enctype="multipart/form-data">-->
+<div th:insert="_navbar :: navbar"></div>
 <form action="/coach/reg" method="post"  enctype="multipart/form-data">
-<!--    <input th:field="*{name}" placeholder="Name">-->
-<!--    <input th:field="*{username}" placeholder="Username">-->
-<!--    <input th:field="*{password}" placeholder="Password">-->
-<!--    <input th:field="*{description}" placeholder="Description">-->
-<!--    <input th:field="*{image}" type="file" placeholder="Image">-->
     <input name="name" placeholder="Name">
     <input name="username" placeholder="Username">
     <input name="password" placeholder="Password">

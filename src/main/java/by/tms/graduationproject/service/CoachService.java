@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -26,5 +27,10 @@ public class CoachService {
     public Coach findById(Long id) {
         return coachRepository.findById(id).orElse(null);
     }
+    public Optional<Coach> findByUsername(String username) {
+        return coachRepository.findByUsername(username);
+    }
+
+
 
 }
