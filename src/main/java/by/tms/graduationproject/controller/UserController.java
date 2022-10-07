@@ -46,20 +46,16 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String fillLogin() {
+    public String fillLogin(@RequestParam(value = "error", defaultValue = "false") boolean loginError) {
+        if(loginError){
+
+        }
         return "login";
     }
 
     @GetMapping("/info/{id}")
     public String coachInfo(@PathVariable Long id, Model model) {
-        User user = userService.findById(id);
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.findById(id));
         return "page";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/";
     }
 }

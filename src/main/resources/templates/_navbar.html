@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="navbar">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="navbar"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Header</title>
@@ -24,15 +25,21 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/user/reg">Registration</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/user/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/user/logout">Logout</a>
-                </li>
+                <div sec:authorize="isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/user/reg">Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/user/login">Login</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post">
+                            <button>Logout</button>
+                        </form>
+                    </li>
+                </div>
             </ul>
         </div>
     </div>
