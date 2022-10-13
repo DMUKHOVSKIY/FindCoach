@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+</head>
+<body>
+<div th:insert="_navbar :: navbar"></div>
+<div class="container">
+    <div class="col-4 mx-auto">
+        <img th:src="@{/images/{id}(id=${loggedUser.imageName})}"/><br><br>
+    </div>
+</div>
+<b>Имя: </b> <a th:text="${loggedUser.name}"></a><br>
+<b>Описание: </b> <a th:text="${loggedUser.description}"></a><br>
+<b>Username: </b> <a th:text="${loggedUser.username}"></a><br>
+<b>Password: </b> <a th:text="${loggedUser.password}"></a><br>
+<b>Number: </b> <a th:text="${loggedUser.number}"></a><br>
+<b>MainActivity: </b> <a th:text="${loggedUser.mainActivity}"></a><br>
+</body>
+</html>

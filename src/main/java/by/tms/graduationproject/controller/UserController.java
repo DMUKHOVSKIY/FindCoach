@@ -6,6 +6,10 @@ import by.tms.graduationproject.service.UserService;
 import by.tms.graduationproject.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Optional;
 
 
@@ -30,7 +35,6 @@ public class UserController {
 
     @GetMapping("/reg")
     public String createNewCoach(Model model) {
-        // model.addAttribute("Coach", new Coach());
         return "reg";
     }
 
@@ -46,10 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String fillLogin(@RequestParam(value = "error", defaultValue = "false") boolean loginError) {
-        if(loginError){
-
-        }
+    public String fillLogin() {
         return "login";
     }
 
@@ -57,5 +58,11 @@ public class UserController {
     public String coachInfo(@PathVariable Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
         return "page";
+    }
+
+    @PostMapping("/account")
+    public String account (@AuthenticationPrincipal User user, Model model){
+        model.addAttribute("loggedUser", user);
+        return "account";
     }
 }

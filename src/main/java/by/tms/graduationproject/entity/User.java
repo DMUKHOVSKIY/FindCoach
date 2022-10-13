@@ -21,6 +21,8 @@ public class User implements UserDetails {
     private String name;
     private String username;
     private String password;
+    private String number;
+    private String mainActivity;
     private boolean active;
     @Column(columnDefinition = "text")
     private String description;

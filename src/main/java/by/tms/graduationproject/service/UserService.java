@@ -38,6 +38,10 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+    public List<User> findByMainActivity(String mainActivity){
+        return userRepository.findByMainActivity(mainActivity);
+    }
+
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }

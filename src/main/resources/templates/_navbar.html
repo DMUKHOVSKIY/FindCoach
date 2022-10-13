@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="navbar"
+<html th:fragment="navbar" lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +8,27 @@
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
           crossorigin="anonymous">
 </head>
+<style>
+    body {
+        background: #000 url(/Logo/Background.webp); /* Фоновый цвет и фоновый рисунок*/
+        color: black; /*Цвет текста на странице*/
+        background-attachment: fixed; /* Фон страницы фиксируется */
+        background-size: 100%; /* Изображение повторяется по горизонтали */
+    }
+</style>
 <body>
-<nav class="navbar bg-light">
+<nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="https://t.me/dmukhovskiy">
-            <img src="https://sowa-ru.com/wp-content/uploads/2019/02/piyadehr.piyadehr8.png"
+            <img th:src="@{/Logo/logo.png}"
                  alt="" width="60" height="34" class="d-inline-block align-text-top">
             FindCoach
         </a>
+        <form class="d-flex" th:action="@{/}" method="post">
+            <input class="form-control me-2" type="search" name="filter" th:value="${filter}" placeholder="Search"
+                   aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,6 +48,9 @@
                 </div>
                 <div sec:authorize="isAuthenticated()">
                     <li class="nav-item">
+                        <a class="nav-link active" href="/user/account">Account</a>
+                    </li>
+                    <li class="nav-item">
                         <form th:action="@{/logout}" method="post">
                             <button>Logout</button>
                         </form>
@@ -53,6 +69,7 @@
                     <div class="card-body d-flex flex-column align-items-center">
                         <h5 class="card-title" th:text="${user.name}"/>
                         <p class="card-text" th:text="${user.description} "></p>
+                        <p class="card-text" th:text="${user.mainActivity} "></p>
                         <a th:href="@{/user/info/{id}(id=${user.id})}" class="btn btn-primary">Info</a>
                     </div>
                 </div>

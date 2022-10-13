@@ -22,12 +22,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .antMatchers("/", "/user/reg", "/user/info/**", "/images/**").permitAll()
+                .antMatchers("/", "/user/reg", "/user/info/**", "/images/**", "/Logo/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/user/login")
-                .failureUrl("/user/login?error=true").permitAll()
+                .successForwardUrl("/user/account").permitAll()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/").permitAll();
