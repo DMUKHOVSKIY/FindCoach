@@ -4,18 +4,83 @@
     <meta charset="UTF-8">
     <title>Account</title>
 </head>
+
 <body>
 <div th:insert="_navbar :: navbar"></div>
-<div class="container">
+<div class="container mt-5">
     <div class="col-4 mx-auto">
         <img th:src="@{/images/{id}(id=${loggedUser.imageName})}"/><br><br>
     </div>
 </div>
-<b>Имя: </b> <a th:text="${loggedUser.name}"></a><br>
-<b>Описание: </b> <a th:text="${loggedUser.description}"></a><br>
-<b>Username: </b> <a th:text="${loggedUser.username}"></a><br>
-<b>Password: </b> <a th:text="${loggedUser.password}"></a><br>
-<b>Number: </b> <a th:text="${loggedUser.number}"></a><br>
-<b>MainActivity: </b> <a th:text="${loggedUser.mainActivity}"></a><br>
+
+<div class="row">
+    <div class="col-sm-11">
+        <form class="d-flex" th:action="@{/update/updateUsername}" method="post">
+            <div class="col-sm-1">
+                <b>Ник: </b>
+            </div>
+            <input type="text" size="10" maxlength="15" onkeydown="size=value.length||10"
+                   onkeyup="onkeydown()" onkeypress="onkeydown()" onchange="onkeydown()" th:name="username"
+                   th:value="${loggedUser.username}" aria-describedby="button-addon1">
+            <button class="btn btn-outline-dark" type="Edit" id="button-addon1">Edit</button>
+        </form>
+    </div>
+    <div class="col-sm-11">
+        <form class="d-flex" th:action="@{/update/updatePassword}" method="get">
+            <div class="col-sm-1">
+                <b>Пароль: </b>
+            </div>
+            <input type="password" size="10" readonly="readonly" placeholder="******" aria-describedby="button-addon2">
+            <button class="btn btn-outline-dark" id="button-addon2">Edit</button>
+        </form>
+    </div>
+    <div class="col-sm-11">
+        <form class="d-flex" th:action="@{/update/updateName}" method="post">
+            <div class="col-sm-1">
+                <b>Имя: </b>
+            </div>
+            <input type="text" size="10" maxlength="15" onkeydown="size=value.length||10"
+                   onkeyup="onkeydown()" onkeypress="onkeydown()" onchange="onkeydown()" th:name="name"
+                   th:value="${loggedUser.name}" aria-describedby="button-addon3">
+            <button class="btn btn-outline-dark" type="Edit" id="button-addon3">Edit</button>
+        </form>
+    </div>
+    <div class="col-sm-11">
+        <form class="d-flex" th:action="@{/update/updateNumber}" method="post">
+            <div class="col-sm-1">
+                <b>Номер телефона: </b>
+            </div>
+            <input type="text" size="10" maxlength="13" onkeydown="size=value.length||10"
+                   onkeyup="onkeydown()" onkeypress="onkeydown()" onchange="onkeydown()"
+                   th:name="number" th:value="${loggedUser.number}"
+                   aria-describedby="button-addon4">
+            <button class="btn btn-outline-dark" type="Edit" id="button-addon4">Edit</button>
+            <!--            <button class="btn btn-outline-dark" th:href="@{/upadate/addNumber}" type="Edit">Add number</button>-->
+        </form>
+    </div>
+    <div class="col-sm-11">
+        <form class="d-flex" th:action="@{/update/updateMainActivity}" method="post">
+            <div class="col-sm-1">
+                <b>Вид спорта: </b>
+            </div>
+            <input type="text" size="10" maxlength="50" onkeydown="size=value.length||10"
+                   onkeyup="onkeydown()" onkeypress="onkeydown()" onchange="onkeydown()"
+                   th:name="mainActivity" th:value="${loggedUser.mainActivity}"
+                   aria-describedby="button-addon5">
+            <button class="btn btn-outline-dark" type="Edit" id="button-addon5">Edit</button>
+            <!--        <button class="btn btn-outline-dark" th:href="@{/upadate/addNumber}" type="Edit">Add number</button>-->
+        </form>
+    </div>
+    <div class="col-sm-11">
+        <form class="d-flex" th:action="@{/update/updateDescription}" method="post">
+            <div class="col-sm-1">
+                <b>Описание: </b>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" th:name="description"
+                      th:text="${loggedUser.description}" aria-describedby="button-addon6"></textarea>
+            <button class="btn btn-outline-dark" type="Edit" id="button-addon6">Edit</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

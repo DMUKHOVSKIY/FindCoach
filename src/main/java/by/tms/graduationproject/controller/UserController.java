@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/reg")
-    public String save(@RequestParam("image") MultipartFile image, User user, Model model) throws IOException {
+    public String save(MultipartFile image, User user, Model model) throws IOException {
         String resultImageName = imageService.upload(image, path);
         user.setImageName(resultImageName);
         if (!userService.saveCoach(user)) {
@@ -60,9 +60,16 @@ public class UserController {
         return "page";
     }
 
-    @PostMapping("/account")
-    public String account (@AuthenticationPrincipal User user, Model model){
+    @GetMapping("/account")
+    public String account(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("loggedUser", user);
         return "account";
     }
+
+    @PostMapping("/account")
+    public String accountForm(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("loggedUser", user);
+        return "account";
+    }
+
 }

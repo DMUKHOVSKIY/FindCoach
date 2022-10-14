@@ -31,6 +31,7 @@ public class IndexController {
             users = userService.findByMainActivity(filter);
         }
         model.addAttribute("coachesInfo", users);
+        model.addAttribute("filter", filter);
         return "index";
     }
 }
