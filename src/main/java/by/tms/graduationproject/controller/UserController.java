@@ -65,11 +65,4 @@ public class UserController {
         model.addAttribute("loggedUser", user);
         return "account";
     }
-
-    @PostMapping("/account")
-    public String accountForm(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("loggedUser", user);
-        return "account";
-    }
-
 }
