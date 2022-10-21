@@ -6,20 +6,14 @@ import by.tms.graduationproject.service.UserService;
 import by.tms.graduationproject.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.security.Principal;
-import java.util.Optional;
 
 
 @Controller
@@ -42,7 +36,7 @@ public class UserController {
     public String save(MultipartFile image, User user, Model model) throws IOException {
         String resultImageName = imageService.upload(image, path);
         user.setImageName(resultImageName);
-        if (!userService.saveCoach(user)) {
+        if (!userService.saveUser(user)) {
             model.addAttribute("errorMessage", "User username" + user.getUsername() + " is exist!");
             return "reg";
         }

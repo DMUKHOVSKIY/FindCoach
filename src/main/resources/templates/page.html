@@ -7,7 +7,7 @@
 <body>
 <div th:insert="_navbar :: navbar"></div>
 <h4>Информация о тренере:</h4>
-<img th:src="@{/images/{id}(id=${user.imageName})}" height="60px"/><br><br>
+<img th:src="@{/images/{id}(id=${user.imageName})}" class="rounded" height="60px"/><br><br>
 <b>Имя: </b> <a th:text="${user.name}"></a><br>
 <b>Описание: </b> <a th:text="${user.description}"></a><br>
 <b>Number: </b> <a th:text="${user.number}"></a><br>
