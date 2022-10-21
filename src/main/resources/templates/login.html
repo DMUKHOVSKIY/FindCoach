@@ -6,15 +6,26 @@
 </head>
 <body>
 <div th:insert="_navbar :: navbar"></div>
-<form th:action="@{/user/login}" method="post">
-    <input name="username" placeholder="Username">
-    <input name="password" placeholder="Password">
-    <button>Submit</button>
-    <div th:if="${param.error}">
-        <div class="alert alert-danger" role="alert">
-            <p>Username or password is incorrect. Please provide valid username or password</p>
+<div class="container mt-3">
+    <form th:action="@{/user/login}" method="post">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username" required/>
+            <label for="floatingInput">Email address</label>
         </div>
-    </div>
-</form>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password"
+                   placeholder="Password" required/>
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="col-12 mt-3">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+        <div th:if="${param.error}">
+            <div class="alert alert-danger" role="alert">
+                <p>Username or password is incorrect. Please provide valid username or password</p>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

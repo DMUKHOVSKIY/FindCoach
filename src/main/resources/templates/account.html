@@ -7,10 +7,9 @@
 
 <body>
 <div th:insert="_navbar :: navbar"></div>
-<div class="alert alert-danger" role="alert" th:if="!active">Ваш аккаунт забанен. Обратитесь в поддержку</div>
 <div class="container mt-5">
     <div class="col-4 mx-auto">
-        <img th:src="@{/images/{id}(id=${loggedUser.imageName})}" class="rounded"/><br><br>
+        <img th:src="@{/images/{id}(id=${loggedUser.imageName})}" class="img-fluid"/><br><br>
     </div>
 </div>
 

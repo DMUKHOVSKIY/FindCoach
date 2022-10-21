@@ -5,11 +5,9 @@ import by.tms.graduationproject.entity.Role;
 import by.tms.graduationproject.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +31,7 @@ public class UserService {
     }
 
     public List<User> allActiveUsers() {
-        return userRepository.findAllActiveUsers(true);//FIXME
+        return userRepository.findAllActiveCoaches(true);//FIXME
     }
 
     public User findById(Long id) {
@@ -46,6 +44,10 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public List<User> findAllExceptAdmin(String username) {
+        return userRepository.findAllExceptAdmin(username);
     }
 
     public Optional<User> findByUsername(String username) {

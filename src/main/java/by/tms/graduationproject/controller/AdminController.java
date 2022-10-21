@@ -1,8 +1,10 @@
 package by.tms.graduationproject.controller;
 
+import by.tms.graduationproject.entity.User;
 import by.tms.graduationproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +20,8 @@ public class AdminController {
     private final UserService userService;
 
     @GetMapping("/account")
-    public String admin(Model model) {
-        model.addAttribute("allUsers", userService.findAll());
-
+    public String admin(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("allUsers", userService.findAllExceptAdmin(user.getUsername()));
         return "adminAccount";
     }
 

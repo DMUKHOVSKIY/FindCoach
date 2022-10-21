@@ -1,22 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
 </head>
 <body>
 <div th:insert="_navbar :: navbar"></div>
-<form th:action="@{/user/reg}" method="post" enctype="multipart/form-data">
-    <input name="name" placeholder="Name">
-    <input name="username" placeholder="Username">
-    <input name="password" placeholder="Password">
-    <input name="description" placeholder="Description">
-    <div class="form-group input-group has-feedback">
-        <label class="col-form-label">Image</label>
-        <input type="file" name="image" />
+<div class="container mt-3">
+<form class="row g-3 needs-validation" th:action="@{/user/reg}" method="post" enctype="multipart/form-data">
+    <div class="col-md-4 position-relative">
+        <input type="text" class="form-control" id="validationTooltip01" name="name" placeholder="Name" required/>
+        <div class="valid-tooltip">
+            OK!
+        </div>
     </div>
-    <button>Submit</button>
+    <div class="col-md-4 position-relative">
+        <div class="input-group has-validation">
+            <input type="text" class="form-control" id="validationTooltipUsername"
+                   aria-describedby="validationTooltipUsernamePrepend" name="username" placeholder="Username" required/>
+            <div class="invalid-tooltip">
+                Please choose a unique and valid username.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 position-relative">
+        <input type="password" class="form-control" id="validationTooltip02" name="password" placeholder="Password" required/>
+        <div class="valid-tooltip">
+            OK!
+        </div>
+    </div>
+    <div class="col-md-4 position-relative">
+        <input type="text" class="form-control" id="validationTooltip03" name="number" placeholder="Number" required/>
+        <div class="valid-tooltip">
+            OK!
+        </div>
+    </div>
+    <div class="col-md-4 position-relative">
+        <input type="text" class="form-control" id="validationTooltip04" name="mainActivity" placeholder="MainActivity" required/>
+        <div class="valid-tooltip">
+            OK!
+        </div>
+    </div>
+    <div class="col-md-4 position-relative">
+        <input type="file" class="form-control" aria-label="file example" id="validationTooltip05" name="image" required/>
+        <div class="invalid-tooltip">
+            Please choose a file.
+        </div>
+    </div>
+    <div class="col-md-9 position-relative">
+        <textarea class="form-control" aria-label="With textarea"
+                  aria-describedby="button-addon6" id="validationTooltip06"
+                  name="description" placeholder="Description" required></textarea>
+        <div class="invalid-tooltip">
+            Please provide a valid description.
+        </div>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
 </form>
+</div>
 <p th:text="${errorMessage}"></p>
 </body>
 </html>

@@ -6,11 +6,30 @@
 </head>
 <body>
 <div th:insert="_navbar :: navbar"></div>
-<h4>Информация о тренере:</h4>
-<img th:src="@{/images/{id}(id=${user.imageName})}" class="rounded" height="60px"/><br><br>
-<b>Имя: </b> <a th:text="${user.name}"></a><br>
-<b>Описание: </b> <a th:text="${user.description}"></a><br>
-<b>Number: </b> <a th:text="${user.number}"></a><br>
-<b>MainActivity: </b> <a th:text="${user.mainActivity}"></a><br>
+
+<div class="text-center">
+    <div class="card-header  mb-3 mt-3">
+        <h5 class="card-title">Информация о тренере</h5>
+    </div>
+    <div class="card-body">
+        <div>
+            <img th:src="@{/images/{id}(id=${user.imageName})}" class="img-fluid">
+        </div>
+            <b>Имя: </b>
+            <a th:text="${user.name}"></a><br>
+        <b>MainActivity: </b> <a th:text="${user.mainActivity}"></a><br>
+        <b>Описание: </b> <a th:text="${user.description}"></a><br>
+        <b>Number: </b> <a th:text="${user.number}"></a><br>
+    </div>
+</div>
+
+<!--<div>-->
+<!--    <h4 class="">Информация о тренере:</h4>-->
+<!--    <img th:src="@{/images/{id}(id=${user.imageName})}" class="img-fluid"><br><br>-->
+<!--    <b>Имя: </b> <a th:text="${user.name}"></a><br>-->
+<!--    <b>Описание: </b> <a th:text="${user.description}"></a><br>-->
+<!--    <b>Number: </b> <a th:text="${user.number}"></a><br>-->
+<!--    <b>MainActivity: </b> <a th:text="${user.mainActivity}"></a><br>-->
+<!--</div>-->
 </body>
 </html>
