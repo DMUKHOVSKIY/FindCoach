@@ -5,6 +5,8 @@ import by.tms.graduationproject.entity.Role;
 import by.tms.graduationproject.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,16 +32,16 @@ public class UserService {
         return false;
     }
 
-    public List<User> allActiveUsers() {
-        return userRepository.findAllActiveCoaches(true);//FIXME
+    public Page<User> allActiveCoaches(Pageable pageable) {
+        return userRepository.findAllActiveCoaches(pageable);
     }
 
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public List<User> findByMainActivity(String mainActivity) {
-        return userRepository.findByMainActivity(mainActivity);
+    public Page<User> findByMainActivity(String mainActivity, Pageable pageable) {
+        return userRepository.findByMainActivity(mainActivity, pageable);
     }
 
     public List<User> findAll() {
