@@ -25,11 +25,6 @@
 </th:block>
 <nav aria-label="Page navigation example">
     <div class="pagination justify-content-center" th:if="${usersPage.totalPages > 0}">
-
-        <!--        <a th:href="@{/(size=${usersPage.size}, page=${pageNumber})}"-->
-        <!--           th:text="${pageNumber}"-->
-        <!--           th:class="${pageNumber==usersPage.number + 1} ? active"></a>-->
-
         <li class="page-item" th:each="pageNumber : ${pageNumbers}" th:class="${pageNumber==usersPage.number} ? active">
             <a class="page-link" th:href="@{'/?page=' + ${pageNumber}}"
                th:text="${pageNumber+1}"></a>
